@@ -1,22 +1,19 @@
-<?php
-	# imports
-		
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tela Inicial</title>
+	<title>Cadastro de Cliente</title>
 </head>
 <body>
-	<div>Identificação do Usuário</div>
-        <form action="LoginServlet" method="post">
+	 <h1>Novo cliente</h1>
+        <form action="../../control/cliente/ControleCliente.php" method="post">
+            <div>Nome:</div>
+            <div><input type="text" name="nome" /></div>
             <div>Login:</div>
             <div><input type="text" name="login" /></div>
             <div>Senha:</div>
             <div><input type="password" name="senha" /></div>
-            <div><input type="submit" value="Enviar" /></div>
+            <div><input type="submit" value="Salvar" /></div>
         </form>
-        <div><a href="view/cliente/novoCliente.php">Criar novo cliente</a></div>
 </body>
 </html>

@@ -6,14 +6,10 @@
 </head>
 <body>
 	<?php
-		include("control/Classes/ConexaoPostgre.php");
-		include("control/Classes/ConexaoMysql.php");
+		include("model/conexao/ClassConexao.php");
 
-		$ConM = new ConexaoMysql();
-		$ConP = new ConexaoPostgre();
+		$ConP = new ClassConexao();
 
-		#var_dump($ConM->conectaDB());
-		#print("\nHello World!\n");
 		var_dump($ConP->conectaDB());
 	?>
 </body>

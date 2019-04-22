@@ -22,10 +22,10 @@
 				$this->nome = $senha;
 			}
 			// nome
-			public functiongetLogin(){
+			public function getLogin(){
 				return $this->login;
 			}
-			public function setNome($login) {
+			public function setLogin($login) {
 				$this->login = $login;
 			}
 	}

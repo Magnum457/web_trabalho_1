@@ -4,7 +4,7 @@
 		public function conectaDB(){
 			try {
 				$Con = new PDO("pgsql:host="."localhost".";dbname="."web_trabalho",
-											 "magno", "$123");
+											 "magno", "123");
 				return $Con;
 			} catch (PDOException $Erro) {
 				return $Erro;

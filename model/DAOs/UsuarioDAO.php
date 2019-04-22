@@ -1,56 +1,65 @@
 <?php
-	#imports
-	include("../classes/Usuario.php");
-	include("../classes/Funcionario.php");
-	include("../conexao/CRUD.php");
-
+	# imports
+	include($configs->MODELPATH."conexao/Cadastro.php");
+	include($configs->MODELPATH."classes/Usuario.php");
+	include($configs->MODELPATH."classes/Funcionario.php");
+	
 	class UsuarioDAO {
 		// atributos
 			private $listaCliente = array();
 			private $listaFuncionario = array();
-			private $CRUD = new CRUD();
 
 		// metodos do cliente
 			# adiciona
 			public function addCliente($login, $nome, $senha){
-				return $this->CRUD->insertDB("cliente", array($login, $nome, $senha),"");
+				$Crud = new Cadastro();
+				return $Crud->insertDB("cliente", "?,?,?", array($login, $nome, $senha));
 			}
 			# altera
 			public function alteraCliente($login, $nome, $senha){
-				return $this->CRUD->alteraDB("cliente", array($login, $nome, $senha),"");
+				$Crud = new Cadastro();
+				return $Crud->alteraDB("cliente", array($login, $nome, $senha),"");
 			}
 			# exclui
 			public function excluiCliente($login){
-				return $this->CRUD->excluiDB("cliente", $login);
+				$Crud = new Cadastro();
+				return $Crud->excluiDB("cliente", $login);
 			}
 			# busca
 			public function buscaCliente($login){
-				return $this->CRUD->selectDB(, "cliente", $login);
+				$Crud = new Cadastro();
+				return $Crud->selectDB("", "cliente", $login);
 			}
 			# lista
 			public function listaCliente(){
-				return $this->CRUD->selectDB(, "cliente","");
+				$Crud = new Cadastro();
+				return $Crud->selectDB("", "cliente","");
 			}
 		// metodos do funcionario
 			# adiciona
 			public function addFuncionario($login, $nome, $senha, $salario){
-				return $this->CRUD->insertDB("funcionario", array($login, $nome, $senha, $salario),"");
+				$Crud = new Cadastro();
+				return $Crud->insertDB("funcionario", "?,?,?,?", array($login, $nome, $senha, $salario));
 			}
 			# altera
 			public function alteraFuncionario($login, $nome, $senha, $salario){
-				return $this->CRUD->alteraDB("funcionario", array($login, $nome, $senha, $salario),"");
+				$Crud = new Cadastro();
+				return $Crud->alteraDB("funcionario", array($login, $nome, $senha, $salario),"");
 			}
 			# exclui
 			public function excluiFuncionario($login){
-				return $this->CRUD->excluiDB("funcionario", $login);
+				$Crud = new Cadastro();
+				return $Crud->excluiDB("funcionario", $login);
 			}
 			# busca
 			public function buscaFuncionario($login){
-				return $this->CRUD->selectDB(, "funcionario", $login);
+				$Crud = new Cadastro();
+				return $Crud->selectDB("", "funcionario", $login);
 			}
 			# lista
 			public function listaFuncionario(){
-				return $this->CRUD->selectDB(, "funcionario","");
+				$Crud = new Cadastro();
+				return $Crud->selectDB("", "funcionario","");
 			}
 	}
 ?>

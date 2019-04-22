@@ -9,7 +9,7 @@
 		# inserir os dados
 		case 'inserir':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->inserirCliente($nome, $login, $senha)){
+			if ($Negocio->inserirFuncionario($nome, $login, $senha, $salario)){
 				echo "Deu certo";
 			} else {
 				echo "Não deu certo";

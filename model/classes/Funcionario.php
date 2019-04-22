@@ -9,7 +9,7 @@
 				return $this->salario;
 			}
 			public function setSalario($salario){
-				$this->salario = $salario
+				$this->salario = $salario;
 			}
 	}
 ?>

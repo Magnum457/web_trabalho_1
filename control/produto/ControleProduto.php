@@ -1,15 +1,15 @@
 <?php
 	# imports
 	include("ObterDados.php");
-	$configs = include_once("../../config.php"); 
-	include_once($configs->MODELPATH."negocio/UsuarioNegocio.php");
+	include("../../model/negocio/ProdutoNegocio.php");
+	include("../../model/classes/Produto.php");
 
 	# escolha de operação
 	switch ($operacao) {
 		# inserir os dados
 		case 'inserir':
-			$Negocio = new UsuarioNegocio();
-			if ($Negocio->inserirCliente($nome, $login, $senha)){
+			$Negocio = new ProdutoNegocio();
+			if ($Negocio->inserir($descricao, $id_categoria)){
 				echo "Deu certo";
 			} else {
 				echo "Não deu certo";

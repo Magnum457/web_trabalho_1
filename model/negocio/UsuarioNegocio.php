@@ -1,59 +1,57 @@
 <?php
 	# imports
-	include("../classes/Usuario.php");
-	include("../DAOs/UsuarioDAO.php");
-	include("../classes/Funcionario.php");
+	include($configs->MODELPATH."DAOs/UsuarioDAO.php");
 
 	class UsuarioNegocio{
 		// metodos para o cliente
 			# inserir
-			public function inserir($nome, $login, $senha){
+			public function inserirCliente($login, $nome, $senha){
 				$UsuarioDAO = new UsuarioDAO();
-				return $UsuarioDAO->addCliente($nome, $login, $senha);
+				return $UsuarioDAO->addCliente($login, $nome, $senha);
 			}
 			# alterar
-			public function alterar($nome, $login, $senha){
+			public function alterarCliente($nome, $login, $senha){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->alteraCliente($nome, $login, $senha);
 			}
 			# excluir
-			public function excluir($login){
+			public function excluirCliente($login){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->excluiCliente($login);
 			}
 			# obter
-			public function obter($login){
+			public function obterCliente($login){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->buscaCliente($login);
 			}
 			# listar
-			public function listar(){
+			public function listarCliente(){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->listaCliente();
 			}
 		// metodos para o funcionario
 			# inserir
-			public function inserir($nome, $login, $senha, $salario){
+			public function inserirFuncionario($nome, $login, $senha, $salario){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->addFuncionario($nome, $login, $senha, $salario);
 			}
 			# alterar
-			public function alterar($nome, $login, $senha, $salario){
+			public function alterarFuncionario($nome, $login, $senha, $salario){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->alteraFuncionario($nome, $login, $senha, $salario);
 			}
 			# excluir
-			public function excluir($login){
+			public function excluirFuncionario($login){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->excluiFuncionario($login);
 			}
 			# obter
-			public function obter($login){
+			public function obterFuncionario($login){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->buscaFuncionario($login);
 			}
 			# listar
-			public function listar(){
+			public function listarFuncionario(){
 				$UsuarioDAO = new UsuarioDAO();
 				return $UsuarioDAO->listaFuncionario();
 			}

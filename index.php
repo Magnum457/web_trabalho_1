@@ -1,6 +1,10 @@
 <?php
 	# imports
-		
+    include_once("config.php"); 
+ //    include("model/conexao/Cadastro.php"); 
+	// // $Crud = new Cadastro();
+
+ // //    echo var_dump($Crud->conectaDB());
 ?>
 <!DOCTYPE html>
 <html lang="en">

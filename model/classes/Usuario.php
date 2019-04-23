@@ -21,7 +21,7 @@
 			public function setSenha($senha) {
 				$this->nome = $senha;
 			}
-			// nome
+			// login
 			public function getLogin(){
 				return $this->login;
 			}

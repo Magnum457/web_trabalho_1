@@ -30,15 +30,15 @@
 			}
 
 			# inserir os dados no banco de dados
-			public function insertDB($Tabela, $Valores, $Parametros){
-				# INSERT INTO cliente values (login, nome, senha)
-				$this->statement("INSERT INTO web_trabalho_1.$Tabela values ($Valores)", $Parametros);
+			public function insertDB($Tabela, $Atributos, $Valores, $Parametros){
+				# INSERT INTO cliente (login, nome, senha) values (login, nome, senha)
+				$this->statement("INSERT INTO web_trabalho_1.$Tabela ($Atributos) values ($Valores)", $Parametros);
 				return $this->resultado;
 			}
 
 			# Recuperar os dados no banco de dados
-			public function selectDB($Valores = "*",$Tabela, $Parametros){
-				$this->statement("SELECT {$Valores} FROM web_trabalho_1.{Tabela}", $Parametros);
+			public function selectDB($Campos ,$Tabela , $Condicao ,$Parametros){
+				$this->statement("SELECT {$Campos} FROM web_trabalho_1.{$Tabela} {$Condicao}", $Parametros);
 				return $this->comandos;
 			}
 
@@ -50,7 +50,7 @@
 
 			# Excluir os dados no banco de dados
 			public function excluiDB($Tabela, $Parametros){
-				$this->statement("DELETE FROM web_trabalho_1.{Tabela}", $Parametros);
+				$this->statement("DELETE FROM web_trabalho_1.{$Tabela}", $Parametros);
 				return $this->comandos;
 			}
 	}

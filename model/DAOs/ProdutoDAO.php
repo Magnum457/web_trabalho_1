@@ -1,33 +1,45 @@
 <?php
 	# imports
-	include("../classes/Categoria.php");
-	include("../conexao/CRUD.php");
+	include($configs->MODELPATH."conexao/Cadastro.php");
+	include($configs->MODELPATH."classes/Produto.php");
 
-	class CategoriaDAO{
+	class ProdutoDAO{
 		// atributos
 			private $listaProduto = array();
-			private $CRUD = new CRUD();
 
 		// métodos
 			# adiciona
-			public function addProduto($descricao, $id_categoria){
-				return $this->CRUD->insertDB("produto", array($descricao, $id_categoria),"");
+			public function addProduto($descricao, $id_categoria, $preco){
+				$CRUD = new Cadastro();
+				return $CRUD->insertDB("produto", "descricao, preco, id_categoria", "?,?,?",
+														array($descricao, $preco, $id_categoria));
 			}
 			# altera
 			public function alteraProduto($id, $descricao, $id_categoria){
-				return $this->CRUD->alteraDB("categoria", array($descricao, $id_categoria), $id);
+				$CRUD = new Cadastro();
+				return $CRUD->alteraDB("categoria", array($descricao, $id_categoria), $id);
 			}
 			# exclui
 			public function excluiProduto($id){
-				return $this->CRUD->excluiDB("produto", $id);
+				$CRUD = new Cadastro();
+				return $CRUD->excluiDB("produto", $id);
 			}
 			# busca
 			public function buscaProduto($descricao){
-				return $this->CRUD->selectDB(, "produto", $descricao);
+				$CRUD = new Cadastro();
+				return $CRUD->selectDB("", "produto", $descricao);
 			}
 			# lista
 			public function listaProduto(){
-				return $this->CRUD->selectDB(, "produto","");
+				$Crud = new Cadastro();
+				$BFetch = $Crud->selectDB("*", "produto", "", array());
+				if ($BFetch) {
+					$listaProduto = $BFetch->fetchAll(PDO::FETCH_CLASS, "Produto");
+					return $listaProduto;
+				} else {
+					echo "Sei que fiz tudo errado mas foi tudo sem querer";
+					return false;
+				}
 			}
 	}
 ?>

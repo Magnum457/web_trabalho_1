@@ -1,8 +1,8 @@
 <?php
 	# imports
 	include("ObterDados.php");
-	include("../../model/negocio/CategoriaNegocio.php");
-	include("../../model/classes/Categoria.php");
+	$configs = include_once("../../config.php"); 
+	include_once($configs->MODELPATH."negocio/CategoriaNegocio.php");
 
 	# escolha de operação
 	switch ($operacao) {
@@ -11,6 +11,7 @@
 			$Negocio = new CategoriaNegocio();
 			if ($Negocio->inserir($descricao)){
 				echo "Deu certo";
+				header("Location: ".$configs->BASEURL);
 			} else {
 				echo "Não deu certo";
 			}
@@ -28,7 +29,15 @@
 
 		# listar os dados
 		case 'listar':
-			# code...
+			$Negocio = new CategoriaNegocio();
+			$lista = $Negocio->listar();
+			if($lista){
+				session_start();
+				$_SESSION["listaCategoria"] = $lista;
+				header("Location: ". $configs->BASEURL. "view/categoria/listaCategoria.php");
+			} else {
+				echo "Não deu certo";
+			}
 			break;
 
 		# buscar os dados
@@ -41,3 +50,4 @@
 			break;
 	}
 ?>
+

@@ -11,6 +11,7 @@
 			$Negocio = new UsuarioNegocio();
 			if ($Negocio->inserirCliente($nome, $login, $senha)){
 				echo "Deu certo";
+				header("Location: ".$configs->BASEURL);
 			} else {
 				echo "Não deu certo";
 			}
@@ -28,7 +29,15 @@
 
 		# listar os dados
 		case 'listar':
-			# code...
+			$Negocio = new UsuarioNegocio();
+			$lista = $Negocio->listarCliente();
+			if($lista){
+				session_start();
+				$_SESSION["listaCliente"] = $lista;
+				header("Location: ". $configs->BASEURL. "view/cliente/listaCliente.php");
+			} else {
+				echo "Não deu certo";
+			}
 			break;
 
 		# buscar os dados

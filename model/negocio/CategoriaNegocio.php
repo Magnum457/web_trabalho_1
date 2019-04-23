@@ -1,13 +1,12 @@
 <?php
 	# imports
-	include("../DAOs/CategoriaDAO.php");
-	include("../classes/Categoria.php");
+	include($configs->MODELPATH."DAOs/CategoriaDAO.php");
 
-	class Categoria{
+	class CategoriaNegocio{
 		# inserir
 		public function inserir($descricao){
 			$categoriaDAO = new CategoriaDAO();
-			return $categoriaDAO->addCategoria($nome, $login, $senha);
+			return $categoriaDAO->addCategoria($descricao);
 		}
 		# alterar
 		public function alterar($id, $descricao){
@@ -22,7 +21,7 @@
 		# obter
 		public function obter($descricao){
 			$categoriaDAO = new CategoriaDAO();
-			return $categoriaDAO->buscaCategoria($ldescricao);
+			return $categoriaDAO->buscaCategoria($descricao);
 		}
 		# listar
 		public function listar(){
@@ -30,4 +29,4 @@
 			return $categoriaDAO->listaCategoria();
 		}
 	}
-?.
+?>

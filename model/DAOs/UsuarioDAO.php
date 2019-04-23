@@ -13,7 +13,8 @@
 			# adiciona
 			public function addCliente($login, $nome, $senha){
 				$Crud = new Cadastro();
-				return $Crud->insertDB("cliente", "?,?,?", array($login, $nome, $senha));
+				return $Crud->insertDB("cliente", "login, nome, senha", "?,?,?", 
+												  array($login, $nome, $senha));
 			}
 			# altera
 			public function alteraCliente($login, $nome, $senha){
@@ -33,13 +34,21 @@
 			# lista
 			public function listaCliente(){
 				$Crud = new Cadastro();
-				return $Crud->selectDB("", "cliente","");
+				$BFetch = $Crud->selectDB("*", "cliente", "", array());
+				if ($BFetch) {
+					$listaCliente = $BFetch->fetchAll(PDO::FETCH_CLASS, "Usuario");
+					return $listaCliente;
+				} else {
+					echo  "Se houve um problema entre a gente deixa lá que isso passa dá um beijo e me abraça que o resto eu sei de cor";
+					return false;
+				}
 			}
 		// metodos do funcionario
 			# adiciona
 			public function addFuncionario($login, $nome, $senha, $salario){
 				$Crud = new Cadastro();
-				return $Crud->insertDB("funcionario", "?,?,?,?", array($login, $nome, $senha, $salario));
+				return $Crud->insertDB("funcionario", "login, nome, senha, salario", "?,?,?,?",
+								 					  array($login, $nome, $senha, $salario));
 			}
 			# altera
 			public function alteraFuncionario($login, $nome, $senha, $salario){
@@ -54,12 +63,20 @@
 			# busca
 			public function buscaFuncionario($login){
 				$Crud = new Cadastro();
-				return $Crud->selectDB("", "funcionario", $login);
+				return $Crud->selectDB("*", "funcionario", "WHERE login = ?", array($login));
 			}
 			# lista
 			public function listaFuncionario(){
 				$Crud = new Cadastro();
-				return $Crud->selectDB("", "funcionario","");
+				$BFetch = $Crud->selectDB("*", "funcionario", "", array());
+				if ($BFetch) {
+					$listaFuncionario = $BFetch->fetchAll(PDO::FETCH_CLASS, "Funcionario");
+					return $listaFuncionario;
+				} else {
+					echo "Se houve um problema entre a gente deixa lá que isso passa dá um beijo e me abraça que o resto eu sei de cor";
+					return false;
+				}
+				
 			}
 	}
 ?>

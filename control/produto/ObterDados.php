@@ -32,4 +32,12 @@
 		}else {
 			$id_categoria = "";
 		}
+		# preco
+		if (isset($_POST["preco"])) {
+			$preco = $_POST["preco"];
+		} elseif(isset($_GET["preco"])){
+			$preco = $_GET["preco"];
+		}else {
+			$preco = "";
+		}
 ?>

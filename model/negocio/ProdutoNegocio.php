@@ -1,16 +1,15 @@
 <?php
 	# imports
-	include("../classes/Produto.php");
-	include("../DAOs/ProdutoDAO.php");
+	include($configs->MODELPATH."DAOs/ProdutoDAO.php");
 
 	class ProdutoNegocio{
 		# inserir
-		public function inserir($descricao, $id_categoria){
+		public function inserir($descricao, $preco, $id_categoria){
 			$produtoDAO = new ProdutoDAO();
-			return $produtoDAO->addProduto($descricao, $id_categoria);
+			return $produtoDAO->addProduto($descricao, $preco, $id_categoria);
 		}
 		# alterar
-		public function alterar($id, $descricao){
+		public function alterar($id, $descricao, $preco){
 			$produtoDAO = new ProdutoDAO();
 			return $produtoDAO->alteraProduto($id, $descricao);
 		}

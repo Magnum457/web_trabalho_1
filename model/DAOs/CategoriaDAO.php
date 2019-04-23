@@ -1,33 +1,44 @@
 <?php
 	# imports
-	include("../classes/Categoria.php");
-	include("../conexao/CRUD.php");
+	include($configs->MODELPATH."conexao/Cadastro.php");
+	include($configs->MODELPATH."classes/Categoria.php");
 
 	class CategoriaDAO{
 		// atributos
 			private $listaCategoria = array();
-			private $CRUD = new CRUD();
 
 		// métodos
 			# adiciona
 			public function addCategoria($descricao){
-				return $this->CRUD->insertDB("categoria", $descricao,"");
+				$CRUD = new Cadastro();
+				return $CRUD->insertDB("categoria", "descricao", "?", array($descricao));
 			}
 			# altera
 			public function alteraCategoria($id, $descricao){
-				return $this->CRUD->alteraDB("categoria", array($id, $descricao),"");
+				$CRUD = new Cadastro();
+				return $CRUD->alteraDB("categoria", array($id, $descricao),"");
 			}
 			# exclui
 			public function excluiCategoria($id){
-				return $this->CRUD->excluiDB("categoria", $id);
+				$CRUD = new Cadastro();
+				return $CRUD->excluiDB("categoria", $id);
 			}
 			# busca
 			public function buscaCategoria($descricao){
-				return $this->CRUD->selectDB(, "categoria", $descricao);
+				$CRUD = new Cadastro();
+				return $CRUD->selectDB("", "categoria", $descricao);
 			}
 			# lista
 			public function listaCategoria(){
-				return $this->CRUD->selectDB(, "categoria","");
+				$Crud = new Cadastro();
+				$BFetch = $Crud->selectDB("*", "categoria", "", array());
+				if ($BFetch) {
+					$listaCategoria = $BFetch->fetchAll(PDO::FETCH_CLASS, "Categoria");
+					return $listaCategoria;
+				} else {
+					echo "Me diz aonde foi que eu errei, eu já sei tem outro alguém tentando atrapalhar nosso amor";
+					return false;
+				}
 			}
 	}
 ?>

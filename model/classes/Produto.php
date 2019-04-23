@@ -3,6 +3,7 @@
 		// atributos
 			private $id;
 			private $descricao;
+			private $preco;
 			private $id_categoria;
 
 		// getters e setters
@@ -19,6 +20,13 @@
 			}
 			public function setDescricao($descricao){
 				$this->descricao = $descricao;
+			}
+			//preço
+			public function getPreco(){
+				return $this->preco;
+			}
+			public function setPreco($preco){
+				$this->preco = $preco;
 			}
 			// id_categoria
 			public function getId_categoria(){

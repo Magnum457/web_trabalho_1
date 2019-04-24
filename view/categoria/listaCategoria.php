@@ -31,12 +31,11 @@
 			for ($i=0; $i < count($lista); $i++) { 
 		?>
 			<tr>
-				<td><?php echo $lista[$i]->getID() ?></td>
-				<td><?php echo $lista[$i]->getDescricao() ?></td>
+				<td><?php echo $lista[$i]->getID() ;?></td>
+				<td><?php echo $lista[$i]->getDescricao() ;?></td>
 				<td>
-					<a href="#">Visualizar</a>
-					<a href="#">Editar</a>
-					<a href="#">Excluir</a>
+					<a href=<?php echo "alteraCategoria.php?categoria_altera=".$lista[$i]->getID(); ?> >Editar</a>
+					<a href=<?php echo $configs->BASEURL."control/categoria/ControleCategoria.php?operacao=excluir&exclui_categ=".$lista[$i]->getID(); ?>>Excluir</a>
 				</td>
 			</tr>
 		<?php

@@ -10,9 +10,9 @@
 				return $UsuarioDAO->addCliente($login, $nome, $senha);
 			}
 			# alterar
-			public function alterarCliente($nome, $login, $senha){
+			public function alterarCliente($login, $nome, $senha){
 				$UsuarioDAO = new UsuarioDAO();
-				return $UsuarioDAO->alteraCliente($nome, $login, $senha);
+				return $UsuarioDAO->alteraCliente($login, $nome, $senha);
 			}
 			# excluir
 			public function excluirCliente($login){
@@ -31,14 +31,14 @@
 			}
 		// metodos para o funcionario
 			# inserir
-			public function inserirFuncionario($nome, $login, $senha, $salario){
+			public function inserirFuncionario($login, $nome, $senha, $salario){
 				$UsuarioDAO = new UsuarioDAO();
-				return $UsuarioDAO->addFuncionario($nome, $login, $senha, $salario);
+				return $UsuarioDAO->addFuncionario($login, $nome, $senha, $salario);
 			}
 			# alterar
-			public function alterarFuncionario($nome, $login, $senha, $salario){
+			public function alterarFuncionario($login, $nome, $senha, $salario){
 				$UsuarioDAO = new UsuarioDAO();
-				return $UsuarioDAO->alteraFuncionario($nome, $login, $senha, $salario);
+				return $UsuarioDAO->alteraFuncionario($login, $nome, $senha, $salario);
 			}
 			# excluir
 			public function excluirFuncionario($login){

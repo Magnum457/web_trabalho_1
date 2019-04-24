@@ -9,7 +9,7 @@
 		# inserir os dados
 		case 'inserir':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->inserirCliente($nome, $login, $senha)){
+			if ($Negocio->inserirCliente($login, $nome, $senha)){
 				echo "Deu certo";
 				header("Location: ".$configs->BASEURL);
 			} else {
@@ -19,12 +19,24 @@
 		
 		# alterar os dados
 		case 'alterar':
-			# code...
+			$Negocio = new UsuarioNegocio();
+			if ($Negocio->alterarCliente($login, $nome, $senha)){
+				echo "Deu certo";
+				header("Location: ?operacao=listar");
+			} else {
+				echo "Porque não deu certo e a gente não tá junto?";
+			}
 			break;
 
 		# excluir os dados
 		case 'excluir':
-			# code...
+			$Negocio = new UsuarioNegocio();
+			if ($Negocio->excluirCliente($_GET["exclui_cliente"])){
+				echo "Deu certo";
+				header("Location: ?operacao=listar");
+			} else {
+				echo "Porque não deu certo e a gente não tá junto?";
+			}
 			break;
 
 		# listar os dados

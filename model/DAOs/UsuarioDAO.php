@@ -19,17 +19,17 @@
 			# altera
 			public function alteraCliente($login, $nome, $senha){
 				$Crud = new Cadastro();
-				return $Crud->alteraDB("cliente", array($login, $nome, $senha),"");
+				return $Crud->alteraDB("cliente", "nome = ?, senha = ?", "login = ?", array($nome, $senha, $login));
 			}
 			# exclui
 			public function excluiCliente($login){
 				$Crud = new Cadastro();
-				return $Crud->excluiDB("cliente", $login);
+				return $Crud->excluiDB("cliente", "login = ?", array($login));
 			}
 			# busca
 			public function buscaCliente($login){
 				$Crud = new Cadastro();
-				return $Crud->selectDB("", "cliente", $login);
+				return $Crud->selectDB("*", "cliente", $login);
 			}
 			# lista
 			public function listaCliente(){
@@ -53,12 +53,13 @@
 			# altera
 			public function alteraFuncionario($login, $nome, $senha, $salario){
 				$Crud = new Cadastro();
-				return $Crud->alteraDB("funcionario", array($login, $nome, $senha, $salario),"");
+				return $Crud->alteraDB("funcionario", "nome = ?, senha = ?, salario = ?","login = ?", 
+													  array($nome, $senha, $salario, $login));
 			}
 			# exclui
 			public function excluiFuncionario($login){
 				$Crud = new Cadastro();
-				return $Crud->excluiDB("funcionario", $login);
+				return $Crud->excluiDB("funcionario", "login = ?", array($login));
 			}
 			# busca
 			public function buscaFuncionario($login){

@@ -22,6 +22,10 @@
 				}
 				# executa a query
 				$this->resultado = $this->comandos->execute();
+				if(!$this->comandos){
+					echo "\nPDO::errorInfo():\n";
+   					print_r($con->errorInfo());
+				}
 			}
 
 			# conta os parametros passados para uma consulta
@@ -43,14 +47,15 @@
 			}
 
 			# Alterar os dados no banco de dados
-			public function alteraDB($Tabela, $Valores ,$Parametros){
-				$this->statement("UPDATE FROM web_trabalho_1.{$Tabela} SET {$Valores}", $Parametros);
-				return $this->comandos;
+			public function alteraDB($Tabela, $Set, $Condicoes ,$Parametros){
+				# UPDATE cliente SET (nome, senha)
+				$this->statement("UPDATE web_trabalho_1.{$Tabela} SET {$Set} where {$Condicoes}", $Parametros);
+				return $this->resultado;
 			}
 
 			# Excluir os dados no banco de dados
-			public function excluiDB($Tabela, $Parametros){
-				$this->statement("DELETE FROM web_trabalho_1.{$Tabela}", $Parametros);
+			public function excluiDB($Tabela, $Condicoes, $Parametros){
+				$this->statement("DELETE FROM web_trabalho_1.{$Tabela} where {$Condicoes}", $Parametros);
 				return $this->comandos;
 			}
 	}

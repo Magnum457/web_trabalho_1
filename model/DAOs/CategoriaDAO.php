@@ -16,12 +16,12 @@
 			# altera
 			public function alteraCategoria($id, $descricao){
 				$CRUD = new Cadastro();
-				return $CRUD->alteraDB("categoria", array($id, $descricao),"");
+				return $CRUD->alteraDB("categoria", "descricao = ?", "id = ?", array($descricao, $id));
 			}
 			# exclui
 			public function excluiCategoria($id){
 				$CRUD = new Cadastro();
-				return $CRUD->excluiDB("categoria", $id);
+				return $CRUD->excluiDB("categoria", "id = ?", array($id));
 			}
 			# busca
 			public function buscaCategoria($descricao){

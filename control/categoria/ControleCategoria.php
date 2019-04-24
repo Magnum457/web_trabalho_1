@@ -19,12 +19,24 @@
 		
 		# alterar os dados
 		case 'alterar':
-			# code...
+			$Negocio = new CategoriaNegocio();
+			if ($Negocio->alterar($id, $descricao)){
+				echo "Deu certo";
+				header("Location: ?operacao=listar");
+			} else {
+				echo "Porque não deu certo e a gente não tá junto?";
+			}
 			break;
 
 		# excluir os dados
 		case 'excluir':
-			# code...
+			$Negocio = new CategoriaNegocio();
+			if ($Negocio->excluir($_GET["exclui_categ"])){
+				echo "Deu certo";
+				header("Location: ?operacao=listar");
+			} else {
+				echo "Porque não deu certo e a gente não tá junto?";
+			}
 			break;
 
 		# listar os dados

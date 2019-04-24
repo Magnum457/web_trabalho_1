@@ -22,7 +22,7 @@
 			# exclui
 			public function excluiProduto($id){
 				$CRUD = new Cadastro();
-				return $CRUD->excluiDB("produto", $id);
+				return $CRUD->excluiDB("produto", "id = ?", array($id));
 			}
 			# busca
 			public function buscaProduto($descricao){

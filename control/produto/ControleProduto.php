@@ -27,7 +27,13 @@
 
 		# excluir os dados
 		case 'excluir':
-			# code...
+			$Negocio = new ProdutoNegocio();
+			if ($Negocio->excluir($_GET["exclui_produto"])){
+				echo "Deu certo";
+				header("Location: ?operacao=listar");
+			} else {
+				echo "Porque não deu certo e a gente não tá junto?";
+			}
 			break;
 
 		# listar os dados

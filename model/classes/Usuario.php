@@ -16,7 +16,7 @@
 			// senha
 			// nome
 			public function getSenha(){
-				return $this->nome;
+				return $this->senha;
 			}
 			public function setSenha($senha) {
 				$this->nome = $senha;

@@ -36,9 +36,8 @@
 				<td><?php echo $lista[$i]->getDescricao() ?></td>
 				<td><?php echo $lista[$i]->getId_categoria() ?></td>
 				<td>
-					<a href="#">Visualizar</a>
-					<a href="#">Editar</a>
-					<a href="#">Excluir</a>
+					<a href=<?php echo "alteraProduto.php?produto_altera=".$lista[$i]->getID(); ?>>Editar</a>
+					<a href=<?php echo $configs->BASEURL."control/produto/ControleProduto.php?operacao=excluir&exclui_produto=".$lista[$i]->getID(); ?>>Excluir</a>
 				</td>
 			</tr>
 		<?php

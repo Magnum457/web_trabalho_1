@@ -16,7 +16,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Lista de Categoria</title>
+	<title>Lista de Cliente</title>
 </head>
 <body>
 	<table>
@@ -36,9 +36,8 @@
 				<td><?php echo $lista[$i]->getNome() ?></td>
 				<td><?php echo $lista[$i]->getSenha() ?></td>
 				<td>
-					<a href="#">Visualizar</a>
-					<a href="#">Editar</a>
-					<a href="#">Excluir</a>
+					<a href=<?php echo "alteraCliente.php?cliente_altera=".$lista[$i]->getLogin(); ?>>Editar</a>
+					<a href=<?php echo $configs->BASEURL."control/cliente/ControleCliente.php?operacao=excluir&exclui_cliente=".$lista[$i]->getLogin(); ?>>Excluir</a>
 				</td>
 			</tr>
 		<?php

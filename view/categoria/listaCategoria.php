@@ -17,14 +17,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Lista de Categoria</title>
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/estilo_admin.css">
 </head>
 <body>
+	<!-- começo do header -->
+		<?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
+	<!-- fim do header -->
 	<table>
-		<tr>
-			<td>Id</td>
-			<td>Descricao</td>
-			<td>Ações</td>
-		</tr>	
+		<thead>
+			<th>Id</th>
+			<th>Descricao</th>
+			<th>Ações</th>
+		</thead>	
 
 		<?php
 			# estrutura do for
@@ -43,5 +48,6 @@
 		?>
 
 	</table>
+	<a href=<?="novoCategoria.php"?>>Inserir nova categoria</a>
 </body>
 </html>

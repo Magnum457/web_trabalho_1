@@ -17,16 +17,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Lista de Funcionario</title>
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/estilo_admin.css">
 </head>
 <body>
+	<!-- começo do header -->
+		<?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
+	<!-- fim do header -->
 	<table>
-		<tr>
-			<td>Login</td>
-			<td>Nome</td>
-			<td>Senha</td>
-			<td>Salario</td>
-			<td>Ações</td>
-		</tr>	
+		<thead>
+			<th>Login</th>
+			<th>Nome</th>
+			<th>Senha</th>
+			<th>Salario</th>
+			<th rowspan="2">Ações</th>
+		</thead>	
 
 		<?php
 			# estrutura do for
@@ -47,5 +52,6 @@
 		?>
 
 	</table>
+	<a href=<?php echo "novoFuncionario.php"?>>Inserir novo funcionario</a>
 </body>
 </html>

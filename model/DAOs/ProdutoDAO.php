@@ -15,9 +15,10 @@
 														array($descricao, $preco, $id_categoria));
 			}
 			# altera
-			public function alteraProduto($id, $descricao, $id_categoria){
+			public function alteraProduto($id, $descricao, $id_categoria, $preco){
 				$CRUD = new Cadastro();
-				return $CRUD->alteraDB("categoria", array($descricao, $id_categoria), $id);
+				return $CRUD->alteraDB("produto", "descricao = ?, id_categoria = ?, preco = ?", "id = ?", 
+											   array($descricao, $id_categoria, $preco, $id));
 			}
 			# exclui
 			public function excluiProduto($id){

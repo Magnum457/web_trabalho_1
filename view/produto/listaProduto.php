@@ -17,15 +17,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Lista de Produto</title>
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/estilo_admin.css">
 </head>
 <body>
+	<!-- começo do header -->
+		<?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
+	<!-- fim do header -->
 	<table>
-		<tr>
-			<td>Id</td>
-			<td>Descricao</td>
-			<td>Id_Categoria</td>
-			<td>Ações</td>
-		</tr>	
+		<thead>
+			<th>Id</th>
+			<th>Descricao</th>
+			<th>Id_Categoria</th>
+			<th>Preço</th>
+			<th rowspan="2">Ações</th>
+		</thead>	
 
 		<?php
 			# estrutura do for
@@ -35,8 +41,9 @@
 				<td><?php echo $lista[$i]->getID() ?></td>
 				<td><?php echo $lista[$i]->getDescricao() ?></td>
 				<td><?php echo $lista[$i]->getId_categoria() ?></td>
+				<td><?php echo $lista[$i]->getPreco() ?></td>
 				<td>
-					<a href=<?php echo "alteraProduto.php?produto_altera=".$lista[$i]->getID(); ?>>Editar</a>
+					<a href=<?="alteraProduto.php?produto_altera=".$lista[$i]->getID(); ?>>Editar</a>
 					<a href=<?php echo $configs->BASEURL."control/produto/ControleProduto.php?operacao=excluir&exclui_produto=".$lista[$i]->getID(); ?>>Excluir</a>
 				</td>
 			</tr>
@@ -45,5 +52,6 @@
 		?>
 
 	</table>
+	<a href=<?= "novoProduto.php"?>>Inserir novo produto</a>
 </body>
 </html>

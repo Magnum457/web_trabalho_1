@@ -1,5 +1,6 @@
 <?php
     include("../../model/conexao/Cadastro.php");
+    $configs = include_once("../../config.php");
 
     if(isset($_POST["funcionario_altera"])){
         $login = $_POST["funcionario_altera"];
@@ -22,16 +23,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cadastro de Funcionário</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/estilo_admin.css">
 </head>
 <body>
+    <!-- começo do header -->
+        <?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
+    <!-- fim do header -->
 	 <h1>Novo funcionário</h1>
         <form action="../../control/funcionario/ControleFuncionario.php" method="post">
             <div>Nome:</div>
-            <div><input type="text" name="nome" value=<?php echo $Fetch["nome"]; ?>></div>
+            <div><input type="text" name="nome_funcionario" value=<?php echo $Fetch["nome"]; ?>></div>
             <div>Login:</div>
-            <div><input type="text" name="login" value=<?php echo $Fetch["login"]; ?> readonly/></div>
+            <div><input type="text" name="login_funcionario" value=<?php echo $Fetch["login"]; ?> readonly/></div>
             <div>Senha:</div>
-            <div><input type="password" name="senha" value=<?php echo $Fetch["senha"]; ?>></div>
+            <div><input type="password" name="senha_funcionario" value=<?php echo $Fetch["senha"]; ?>></div>
             <div>Salario:</div>
             <div><input type="text" name="salario" value=<?php echo $Fetch["salario"]; ?> ></div>
             <div><input type="hidden" name="operacao" value="alterar" /></div>

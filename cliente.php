@@ -1,6 +1,6 @@
 <?php
 	# imports
-    include_once("config.php"); 
+    $configs = include_once("config.php"); 
  //    include("model/conexao/Cadastro.php"); 
 	// // $Crud = new Cadastro();
 
@@ -16,7 +16,20 @@
 </head>
 <body>
 	<!-- começo do cabeçalho -->
-        <?php include_once("view/headers/header_cliente.php");?>
+        <header class = "container">
+            <h1><img src="img/logo.png" alt="Logo da MagLoja"></h1>
+
+            <p class="sacola">
+                Nenhum item na sacola de compras
+            </p>
+
+            <nav class="menu-opcoes">
+                <ul>
+                    <li><a href="#">Sua Conta</a></li>
+                    <li><a href=<?=$configs->BASEURL."control/ControleLogout.php"?>>Sair</a></li>  
+                </ul>
+            </nav>
+        </header>
     <!-- fim do cabeçalho -->
 
     <!-- conteúdo da página -->

@@ -1,6 +1,6 @@
 <?php
 	# imports
-	include("ObterDados.php");
+	include("../ObterDados.php");
 	$configs = include_once("../../config.php"); 
 	include_once($configs->MODELPATH."negocio/ProdutoNegocio.php");
 
@@ -9,12 +9,8 @@
 		# inserir os dados
 		case 'inserir':
 			$Negocio = new ProdutoNegocio();
-			var_dump($descricao);
-			var_dump($id_categoria);
-			var_dump($preco);
-			if ($Negocio->inserir($descricao, $id_categoria, $preco)){
-				echo "Deu certo";
-				header("Location: ".$configs->BASEURL);
+			if ($Negocio->inserir($descricao_produto, $id_categoria, $preco)){
+				header("Location: ?operacao=listar");
 			} else {
 				echo "Não deu certo";
 			}
@@ -22,7 +18,18 @@
 		
 		# alterar os dados
 		case 'alterar':
-			# code...
+		echo $id."\t";
+		echo $descricao."\t";
+		echo $id_categoria."\t";
+		echo $preco."\t";
+
+			$Negocio = new ProdutoNegocio();
+			if ($Negocio->alterar($id_produto, $descricao_produto, $id_categoria, $preco)){
+				header("Location: ?operacao=listar");
+			} else {
+				echo "Porque não deu certo e a gente não tá junto?";
+			}
+			break;
 			break;
 
 		# excluir os dados

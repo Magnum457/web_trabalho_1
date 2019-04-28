@@ -1,6 +1,6 @@
 <?php
 	# imports
-	$configs = include("../../config.php");
+	$configs = include_once("../../config.php");
 	include($configs->MODELPATH."classes/Usuario.php");
 	# recuperação das variaveis de sessão
 	session_start();
@@ -17,15 +17,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Lista de Cliente</title>
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/estilo_admin.css">
 </head>
 <body>
+	<!-- começo do header -->
+		<?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
+	<!-- fim do header -->
 	<table>
-		<tr>
-			<td>Login</td>
-			<td>Nome</td>
-			<td>Senha</td>
-			<td>Ações</td>
-		</tr>	
+		<thead>
+			<th>Login</th>
+			<th>Nome</th>
+			<th>Senha</th>
+			<th rowspan="2">Ações</th>
+		</thead>	
 
 		<?php
 			# estrutura do for
@@ -45,5 +50,6 @@
 		?>
 
 	</table>
+	<a href=<?php echo "novoCliente.php";?>>Inserir novo cliente</a>
 </body>
 </html>

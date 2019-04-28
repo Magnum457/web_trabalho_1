@@ -1,17 +1,27 @@
 <?php
 	# imports
-	include("ObterDados.php");
+	include("../ObterDados.php");
 	$configs = include_once("../../config.php"); 
 	include_once($configs->MODELPATH."negocio/UsuarioNegocio.php");
 
 	# escolha de operação
 	switch ($operacao) {
 		# inserir os dados
+		case 'inserir_inicio':
+			$Negocio = new UsuarioNegocio();
+			if ($Negocio->inserirCliente($login_cliente, $nome_cliente, $senha_cliente)){
+				echo "Deu certo";
+				header("Location: ../../index.php");
+			} else {
+				echo "Não deu certo";
+			}
+			break;
+
 		case 'inserir':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->inserirCliente($login, $nome, $senha)){
+			if ($Negocio->inserirCliente($login_cliente, $nome_cliente, $senha_cliente)){
 				echo "Deu certo";
-				header("Location: ".$configs->BASEURL);
+				header("Location: ?operacao=listar");
 			} else {
 				echo "Não deu certo";
 			}
@@ -20,7 +30,7 @@
 		# alterar os dados
 		case 'alterar':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->alterarCliente($login, $nome, $senha)){
+			if ($Negocio->alterarCliente($login_cliente, $nome_cliente, $senha_cliente)){
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {

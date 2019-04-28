@@ -1,6 +1,6 @@
 <?php
 	# imports
-	include("ObterDados.php");
+	include("../ObterDados.php");
 	$configs = include_once("../../config.php"); 
 	include_once($configs->MODELPATH."negocio/CategoriaNegocio.php");
 
@@ -9,9 +9,9 @@
 		# inserir os dados
 		case 'inserir':
 			$Negocio = new CategoriaNegocio();
-			if ($Negocio->inserir($descricao)){
+			if ($Negocio->inserir($descricao_categoria)){
 				echo "Deu certo";
-				header("Location: ".$configs->BASEURL);
+				header("Location: ?operacao=listar");
 			} else {
 				echo "Não deu certo";
 			}
@@ -20,7 +20,7 @@
 		# alterar os dados
 		case 'alterar':
 			$Negocio = new CategoriaNegocio();
-			if ($Negocio->alterar($id, $descricao)){
+			if ($Negocio->alterar($id_categoria, $descricao_categoria)){
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {

@@ -1,4 +1,3 @@
-<?php $configs = include_once("../../config.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +8,9 @@
 </head>
 <body>
     <!-- começo do header -->
-        <?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
+        
     <!-- fim do header -->
-        <form action="../../control/cliente/ControleCliente.php" method="post">
+        <form action="control/cliente/ControleCliente.php" method="post">
             <fieldset class="cadastro">
                 <legend>Novo cliente</legend>
                 <label for="nome">Nome:</label>
@@ -20,7 +19,7 @@
                 <input type="text" name="login_cliente" id="login" required/><br>
                 <label for="senha">Senha:</label>
                 <input type="password" name="senha_cliente" id="senha" required/><br>
-                <input type="hidden" name="operacao" value="inserir" />
+                <input type="hidden" name="operacao" value="inserir_inicio" />
                 <input type="submit" value="Salvar" />
             </fieldset>
         </form>

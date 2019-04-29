@@ -29,7 +29,7 @@
 			# busca
 			public function buscaCliente($login){
 				$Crud = new Cadastro();
-				return $Crud->selectDB("*", "cliente", $login);
+				return $Crud->selectDB("*", "cliente", "where login = ?", array($login));
 			}
 			# lista
 			public function listaCliente(){

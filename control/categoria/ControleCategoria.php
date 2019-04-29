@@ -9,33 +9,42 @@
 		# inserir os dados
 		case 'inserir':
 			$Negocio = new CategoriaNegocio();
-			if ($Negocio->inserir($descricao_categoria)){
+			$res = $Negocio->inserir($descricao_categoria);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Não deu certo";
+				echo "Deu ruim";
 			}
 			break;
 		
 		# alterar os dados
 		case 'alterar':
 			$Negocio = new CategoriaNegocio();
-			if ($Negocio->alterar($id_categoria, $descricao_categoria)){
+			$res = $Negocio->alterar($id_categoria, $descricao_categoria);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Porque não deu certo e a gente não tá junto?";
+				echo "Deu ruim";
 			}
 			break;
 
 		# excluir os dados
 		case 'excluir':
 			$Negocio = new CategoriaNegocio();
-			if ($Negocio->excluir($_GET["exclui_categ"])){
+			$res = $Negocio->excluir($_GET["exclui_categ"]);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Porque não deu certo e a gente não tá junto?";
+				echo "Deu ruim";
 			}
 			break;
 

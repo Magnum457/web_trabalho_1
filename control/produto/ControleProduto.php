@@ -9,7 +9,11 @@
 		# inserir os dados
 		case 'inserir':
 			$Negocio = new ProdutoNegocio();
-			if ($Negocio->inserir($descricao_produto, $id_categoria, $preco)){
+			$res = $Negocio->inserir($descricao_produto, $id_categoria, $preco);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
+				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
 				echo "Não deu certo";
@@ -18,28 +22,29 @@
 		
 		# alterar os dados
 		case 'alterar':
-		echo $id."\t";
-		echo $descricao."\t";
-		echo $id_categoria."\t";
-		echo $preco."\t";
-
 			$Negocio = new ProdutoNegocio();
-			if ($Negocio->alterar($id_produto, $descricao_produto, $id_categoria, $preco)){
+			$res = $Negocio->alterar($id_produto, $descricao_produto, $id_categoria, $preco);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
+				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Porque não deu certo e a gente não tá junto?";
+				echo "Não deu certo";
 			}
-			break;
 			break;
 
 		# excluir os dados
 		case 'excluir':
 			$Negocio = new ProdutoNegocio();
-			if ($Negocio->excluir($_GET["exclui_produto"])){
+			$res = $Negocio->excluir($_GET["exclui_produto"]);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Porque não deu certo e a gente não tá junto?";
+				echo "Não deu certo";
 			}
 			break;
 

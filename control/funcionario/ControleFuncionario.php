@@ -9,35 +9,42 @@
 		# inserir os dados
 		case 'inserir':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->inserirFuncionario($login_funcionario, $nome_funcionario, $senha_funcionario, 
-				$salario)){
+			$res = $Negocio->inserirFuncionario($login_funcionario, $nome_funcionario, $senha_funcionario, $salario);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Não deu certo";
+				echo "mas você me conhece eu faço tudo errado.";
 			}
 			break;
 		
 		# alterar os dados
 		case 'alterar':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->alterarFuncionario($login_funcionario, $nome_funcionario, $senha_funcionario, 
-				$salario)){
+			$res = $Negocio->alterarFuncionario($login_funcionario, $nome_funcionario, $senha_funcionario, $salario);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Porque não deu certo e a gente não tá junto?";
+				echo "mas você me conhece eu faço tudo errado.";
 			}
 			break;
 
 		# excluir os dados
 		case 'excluir':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->excluirFuncionario($_GET["exclui_func"])){
+			$res = $Negocio->excluirFuncionario($_GET["exclui_func"]);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Porque não deu certo e a gente não tá junto?";
+				echo "mas você me conhece eu faço tudo errado.";
 			}
 			break;
 

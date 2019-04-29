@@ -9,7 +9,10 @@
 		# inserir os dados
 		case 'inserir_inicio':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->inserirCliente($login_cliente, $nome_cliente, $senha_cliente)){
+			$res = $Negocio->inserirCliente($login_cliente, $nome_cliente, $senha_cliente);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ../../index.php");
 			} else {
@@ -19,18 +22,24 @@
 
 		case 'inserir':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->inserirCliente($login_cliente, $nome_cliente, $senha_cliente)){
+			$res = $Negocio->inserirCliente($login_cliente, $nome_cliente, $senha_cliente);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
-				echo "Não deu certo";
+				echo "mas você me conhece eu faço tudo errado.";
 			}
 			break;
 		
 		# alterar os dados
 		case 'alterar':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->alterarCliente($login_cliente, $nome_cliente, $senha_cliente)){
+			$res = $Negocio->alterarCliente($login_cliente, $nome_cliente, $senha_cliente);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {
@@ -41,7 +50,10 @@
 		# excluir os dados
 		case 'excluir':
 			$Negocio = new UsuarioNegocio();
-			if ($Negocio->excluirCliente($_GET["exclui_cliente"])){
+			$res = $Negocio->excluirCliente($_GET["exclui_cliente"]);
+			if (is_string($res)){
+				echo $res;
+			} elseif($res == true) {
 				echo "Deu certo";
 				header("Location: ?operacao=listar");
 			} else {

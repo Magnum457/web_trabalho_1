@@ -56,7 +56,7 @@
 			# Excluir os dados no banco de dados
 			public function excluiDB($Tabela, $Condicoes, $Parametros){
 				$this->statement("DELETE FROM web_trabalho_1.{$Tabela} where {$Condicoes}", $Parametros);
-				return $this->comandos;
+				return $this->resultado;
 			}
 	}
 ?>

@@ -1,43 +1,35 @@
 <?php
-<<<<<<< HEAD
-	#includes
-	#
-=======
 	# imports
-    include_once("config.php"); 
+    $configs = include_once("config.php"); 
  //    include("model/conexao/Cadastro.php"); 
 	// // $Crud = new Cadastro();
 
  // //    echo var_dump($Crud->conectaDB());
->>>>>>> js
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-<<<<<<< HEAD
-	<title>Tela Inicial</title>
-</head>
-<body>
-	<?php
-
-	?>
-	
-	<ol>
-		<li><a href="">Cadastro de cliente</a></li>
-		<li><a href="">Cadastro de categorias</a></li>
-		<li><a href="">Cadastro de produtos</a></li>
-		<li><a href="">Cadastro de funcionários</a></li>
-	</ol>
-	
-=======
 	<title>MagLoja</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 	<!-- começo do cabeçalho -->
-        <?php include_once("view/headers/header_cliente.php");?>
+        <header class = "container">
+            <h1><img src="img/logo.png" alt="Logo da MagLoja"></h1>
+
+            <p class="sacola">
+                Nenhum item na sacola de compras
+            </p>
+
+            <nav class="menu-opcoes">
+                <ul>
+                    <li><a href="#">Sua Conta</a></li>
+                    <li><a href=<?=$configs->BASEURL."control/ControleLogout.php"?>>Sair</a></li>  
+                </ul>
+            </nav>
+        </header>
     <!-- fim do cabeçalho -->
 
     <!-- conteúdo da página -->
@@ -49,6 +41,5 @@
     <!-- Inicio do rodapé -->
         <?php include_once("view/footers/footer_cliente.php");?>
     <!-- Fim do rodapé -->
->>>>>>> js
 </body>
 </html>

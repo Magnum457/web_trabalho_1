@@ -44,7 +44,7 @@
 				<td><?php echo $lista[$i]->getPreco() ?></td>
 				<td>
 					<a href=<?="alteraProduto.php?produto_altera=".$lista[$i]->getID(); ?>>Editar</a>
-					<a href=<?php echo $configs->BASEURL."control/produto/ControleProduto.php?operacao=excluir&exclui_produto=".$lista[$i]->getID(); ?>>Excluir</a>
+					<a href=<?php echo $configs->BASEURL."control/modificaDados/ControleProduto.php?operacao=excluir&exclui_produto=".$lista[$i]->getID(); ?>>Excluir</a>
 				</td>
 			</tr>
 		<?php

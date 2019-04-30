@@ -26,9 +26,9 @@
 				return $CRUD->excluiDB("produto", "id = ?", array($id));
 			}
 			# busca
-			public function buscaProduto($descricao){
+			public function buscaProduto($id){
 				$CRUD = new Cadastro();
-				return $CRUD->selectDB("", "produto", $descricao);
+				return $CRUD->selectDB("*", "produto", "where id = ?",array($id));
 			}
 			# lista
 			public function listaProduto(){

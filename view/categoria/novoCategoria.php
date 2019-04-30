@@ -11,7 +11,7 @@
 	<!-- começo do header -->
 		<?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
 	<!-- fim do header -->
-        <form action="../../control/categoria/ControleCategoria.php" method="post" name="form-categ">
+        <form action="../../control/modificaDados/ControleCategoria.php" method="post" name="form-categ">
         	<fieldset class="cadastro">
         		<legend>Cadastro de categoria</legend>
         		<label for="descricao">Descricao:</label><br>

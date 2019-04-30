@@ -44,7 +44,7 @@
 				<td><?php echo $lista[$i]->getSalario() ?></td>
 				<td>
 					<a href=<?php echo "alteraFuncionario.php?funcionario_altera=".$lista[$i]->getLogin(); ?>>Editar</a>
-					<a href=<?php echo $configs->BASEURL."control/funcionario/ControleFuncionario.php?operacao=excluir&exclui_func=".$lista[$i]->getLogin(); ?>>Excluir</a>
+					<a href=<?php echo $configs->BASEURL."control/modificaDados/ControleFuncionario.php?operacao=excluir&exclui_func=".$lista[$i]->getLogin(); ?>>Excluir</a>
 				</td>
 			</tr>
 		<?php

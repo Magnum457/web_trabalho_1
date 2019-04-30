@@ -1,6 +1,6 @@
 <?php
 	# imports
-	include($configs->MODELPATH."DAOs/CategoriaDAO.php");
+	include_once($configs->MODELPATH."DAOs/CategoriaDAO.php");
 
 	class CategoriaNegocio{
 		# operações no banco de dados
@@ -34,9 +34,9 @@
 				}
 			}
 			# obter
-			public function obter($descricao){
+			public function obter($id_categoria){
 				$categoriaDAO = new CategoriaDAO();
-				return $categoriaDAO->buscaCategoria($descricao);
+				return $categoriaDAO->buscaCategoria($id_categoria);
 			}
 			# listar
 			public function listar(){

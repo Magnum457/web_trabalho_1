@@ -1,25 +1,23 @@
 <?php
 	include_once("ObterDados.php");
-	include_once("../model/conexao/Cadastro.php");
+	$configs = include_once("../config.php");
+	include_once('RecuperaDados/RecuperaUsuario.php');
 
-	$CRUD = new Cadastro();
-	$resCliente = $CRUD->selectDB("*", "cliente", "where login = ? and senha = ?", array($login, $senha));
-	$FetchCliente = $resCliente->fetch(PDO::FETCH_ASSOC);
-	$resAdmin = $CRUD->selectDB("*", "funcionario", "where login = ? and senha = ?", array($login, $senha));
-	$FetchAdmin = $resAdmin->fetch(PDO::FETCH_ASSOC);
-	if ($FetchCliente["login"] != "") {
+	$cliente = RecuperaUsuario::obterCliente($login);
+	$funcionario = RecuperaUsuario::obterFuncionario($login);
+
+	if ($cliente) {
 		session_start();
 		$_SESSION["login"] = $login;
 		$_SESSION["senha"] = $senha;
 		header("Location: ../cliente.php");
-	} elseif($FetchAdmin["login"] != "") {
+	} elseif($funcionario) {
 		session_start();
 		$_SESSION["login"] = $login;
 		$_SESSION["senha"] = $senha;
 		header("Location: ../admin.php");
 	} else {
-		echo $FetchCliente["login"]."\n";
-		echo $FetchAdmin["login"]."\n";
+		echo "Dados incorretos";
 	}
 	
 ?>

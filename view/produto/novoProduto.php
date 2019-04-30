@@ -1,6 +1,10 @@
 <?php
-	include("../../model/conexao/Cadastro.php");
+    # imports
     $configs = include_once("../../config.php");
+    include_once("../../control/RecuperaDados/RecuperaCategoria.php");
+
+    # recuperando a lista de categorias
+    $lista = RecuperaCategoria::listaCategoria();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +28,7 @@
     <!-- começo do header -->
         <?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
     <!-- fim do header -->
-        <form action="../../control/produto/ControleProduto.php" method="post" id="formCadastro">
+        <form action="../../control/modificaDados/ControleProduto.php" method="post" id="formCadastro">
             <fieldset class="cadastro">
                 <legend>Nova categoria</legend>
                 <div class="row">
@@ -36,11 +40,9 @@
                     <select name="id_categoria" id="id_categoria" required>
                         <option value="">Selecione</option>
                         <?php
-                            $Crud = new Cadastro();
-                            $BFetch = $Crud->selectDB("*", "categoria", "", array());
-                            while ($Fetch=$BFetch->fetch(PDO::FETCH_ASSOC)) {
+                            for ($i=0; $i < count($lista); $i++) { 
                         ?>
-                        <option value=<?php echo $Fetch['id'] ?> ><?php echo $Fetch['descricao'] ?> </option>
+                        <option value=<?=$lista[$i]->getID()?> ><?=$lista[$i]->getDescricao()?> </option>
                         <?php
                             }
                         ?>

@@ -1,7 +1,9 @@
 <?php
-    include_once("../../model/conexao/Cadastro.php");
+    # imports
     $configs = include_once("../../config.php");
+    include_once("../../control/RecuperaDados/RecuperaUsuario.php");
 
+    # recuperação de variaveis
     if(isset($_POST["cliente_altera"])){
         $login = $_POST["cliente_altera"];
         // echo "vi a alegria chegar quando recebi um telegrama";
@@ -12,11 +14,8 @@
         $login = "";
     }
 
-    $Crud = new Cadastro();
-    $BFetch = $Crud->selectDB("*", "cliente", "where login = ?", array($login));
-    $Fetch = $BFetch->fetch(PDO::FETCH_ASSOC);
-    // var_dump($BFetch);
-    // var_dump($id);
+    # recuperação do cliente
+    $cliente = RecuperaUsuario::obterCliente($login);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,13 +39,13 @@
         <?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
     <!-- fim do header -->
 	 <h1>Novo cliente</h1>
-        <form action="../../control/cliente/ControleCliente.php" method="post" id="formCadastro">
+        <form action="../../control/modificaDados/ControleCliente.php" method="post" id="formCadastro">
             <div>Nome:</div>
-            <div><input type="text" name="nome_cliente" value=<?php echo $Fetch["nome"]; ?> /></div>
+            <div><input type="text" name="nome_cliente" value=<?= $cliente["nome"]?> /></div>
             <div>Login:</div>
-            <div><input type="text" name="login_cliente" value=<?php echo $Fetch["login"]; ?> readonly /></div>
+            <div><input type="text" name="login_cliente" value=<?= $cliente["login"]?> readonly /></div>
             <div>Senha:</div>
-            <div><input type="password" name="senha_cliente" value=<?php echo $Fetch["senha"]; ?> /></div>
+            <div><input type="password" name="senha_cliente" value=<?= $cliente["senha"]?> /></div>
             <div><input type="hidden" name="operacao" value="alterar" /></div>
             <div><input type="submit" value="Salvar" /></div>
         </form>

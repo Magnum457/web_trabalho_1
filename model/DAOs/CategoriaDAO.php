@@ -1,7 +1,7 @@
 <?php
 	# imports
-	include($configs->MODELPATH."conexao/Cadastro.php");
-	include($configs->MODELPATH."classes/Categoria.php");
+	include_once($configs->MODELPATH."conexao/Cadastro.php");
+	include_once($configs->MODELPATH."classes/Categoria.php");
 
 	class CategoriaDAO{
 		// atributos
@@ -24,9 +24,9 @@
 				return $CRUD->excluiDB("categoria", "id = ?", array($id));
 			}
 			# busca
-			public function buscaCategoria($descricao){
+			public function buscaCategoria($id){
 				$CRUD = new Cadastro();
-				return $CRUD->selectDB("", "categoria", $descricao);
+				return $CRUD->selectDB("*", "categoria", "where id = ?", array($id));
 			}
 			# lista
 			public function listaCategoria(){

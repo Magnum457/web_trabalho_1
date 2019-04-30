@@ -42,9 +42,9 @@
 				}
 			}
 			# obter
-			public function obter($descricao){
+			public function obter($id){
 				$produtoDAO = new ProdutoDAO();
-				return $produtoDAO->buscaProduto($descricao);
+				return $produtoDAO->buscaProduto($id);
 			}
 			# listar
 			public function listar(){

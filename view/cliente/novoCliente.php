@@ -20,7 +20,7 @@
     <!-- começo do header -->
         <?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
     <!-- fim do header -->
-        <form action="../../control/cliente/ControleCliente.php" method="post" id="formCadastro">
+        <form action="../../control/modificaDados/ControleCliente.php" method="post" id="formCadastro">
             <fieldset class="cadastro">
                 <legend>Novo cliente</legend>
                 <label for="nome">Nome:</label>

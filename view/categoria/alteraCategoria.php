@@ -1,7 +1,9 @@
 <?php
-	include("../../model/conexao/Cadastro.php");
+	# imports
 	$configs = include_once("../../config.php");
+	include_once("../../control/RecuperaDados/RecuperaCategoria.php");
 
+	# recuperação de variaveis
 	if(isset($_POST["categoria_altera"])){
 		$id = $_POST["categoria_altera"];
 		// echo "vi a alegria chegar quando recebi um telegrama";
@@ -12,9 +14,8 @@
 		$id = "";
 	}
 
-	$Crud = new Cadastro();
-	$BFetch = $Crud->selectDB("*", "categoria", "where id = ?", array($id));
-	$Fetch = $BFetch->fetch(PDO::FETCH_ASSOC);
+	# recuperação da categoria
+	$categoria = RecuperaCategoria::obterCategoria($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +30,10 @@
 		<?php include_once($configs->VIEWPATH."headers/header_admin.php");?>
 	<!-- fim do header -->
 	 <h1>Nova categoria</h1>
-        <form action="../../control/categoria/ControleCategoria.php" method="post">
+        <form action="../../control/modificaDados/ControleCategoria.php" method="post">
             <div>Descricao:</div>
-            <div><input type="text" name="descricao_categoria" value=<?php echo $Fetch["descricao"]; ?> /></div>
-            <div><input type="hidden" name="id_categoria" value=<?php echo $Fetch["id"]; ?> /></div>
+            <div><input type="text" name="descricao_categoria" value=<?=$categoria["descricao"]?> /></div>
+            <div><input type="hidden" name="id_categoria" value=<?=$categoria["id"]?> /></div>
             <div><input type="hidden" name="operacao" value="alterar" /></div>
             <div><input type="submit" value="Salvar" /></div>
         </form>

@@ -42,7 +42,7 @@
 				<td><?php echo $lista[$i]->getSenha() ?></td>
 				<td>
 					<a href=<?php echo "alteraCliente.php?cliente_altera=".$lista[$i]->getLogin(); ?>>Editar</a>
-					<a href=<?php echo $configs->BASEURL."control/cliente/ControleCliente.php?operacao=excluir&exclui_cliente=".$lista[$i]->getLogin(); ?>>Excluir</a>
+					<a href=<?php echo $configs->BASEURL."control/modificaDados/ControleCliente.php?operacao=excluir&exclui_cliente=".$lista[$i]->getLogin(); ?>>Excluir</a>
 				</td>
 			</tr>
 		<?php

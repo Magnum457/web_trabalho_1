@@ -22,8 +22,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cadastro de Categoria</title>
-	<link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/estilo_admin.css">
+	<!-- arquivos de css -->
+        <link rel="stylesheet" href="../../css/reset.css">
+        <link rel="stylesheet" href="../../css/estilo_admin.css">
+    <!-- fim do css -->
+    <!-- arquivos de js -->
+        <script type="text/javascript" src="../../js/jquery.js"></script>
+        <script type="text/javascript" src="../../js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="../../js/validate.js"></script>
+        <script type="text/javascript" src="../../js/additional-methods.min.js"></script>
+        <script type="text/javascript" src="../../js/localization/messages_pt_BR.js"></script>
+    <!-- fim do js -->
 </head>
 <body>
 	<!-- começo do header -->

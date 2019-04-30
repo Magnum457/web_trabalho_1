@@ -30,6 +30,7 @@
     <!-- arquivos de css -->
         <link rel="stylesheet" href="../../css/reset.css">
         <link rel="stylesheet" href="../../css/estilo_admin.css">
+        <!-- <link rel="stylesheet" href="../../css/bootstrap.css"> -->
     <!-- fim do css -->
     <!-- arquivos de js -->
         <script type="text/javascript" src="../../js/jquery.js"></script>
@@ -47,14 +48,15 @@
             <fieldset>
                 <legend>Novo Produto</legend>
                 <!-- descrição do produto -->
-                <div class="row"> 
+                <div class="form-group"> 
                     <label for="descricao_produto">Descrição</label>
-                    <input type="text" name="descricao_produto" id="descricao_produto" value=<?=$produto["descricao"]?> />
+                    <input type="text" name="descricao_produto" id="descricao_produto" class="form-group"
+                     value=<?=$produto["descricao"]?> />
                 </div>
                 <!-- categoria -->
-                <div class="row">
+                <div class="form-group">
                     <label for="id_categoria">Categoria</label>
-                    <select name="id_categoria" id="id_categoria">
+                    <select name="id_categoria" id="id_categoria" class="form-group">
                         <option value="">Selecione</option>
                         <?php
                             for ($i=0; $i < count($listaCategoria); $i++) { 
@@ -71,9 +73,9 @@
                     </select>
                 </div>
                 <!-- preço -->
-                <div class="row">
+                <div class="form-group">
                     <label for="preco">Preço</label>
-                    <input type="text" name="preco" id="preco" value=<?=$produto["preco"];?> />
+                    <input type="text" name="preco" id="preco" class="form-group" value=<?=$produto["preco"];?> />
                 </div>
                 <input type="hidden" name="id_produto" value=<?=$produto["id"];?> />
                 <input type="hidden" name="operacao" value="alterar" />
